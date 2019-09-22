@@ -1,5 +1,4 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import * as Chart from 'chart.js';
 import { BrainHuntApiService, SimplifiedBrainSample, ReadingSession, BrainSamplesResponse } from '../brain-hunt-api.service';
 
@@ -71,7 +70,9 @@ export class DashboardComponent implements OnInit {
               labelString: 'Seconds'
             }
           }]
-        }
+        },
+        responsive: true,
+        maintainAspectRatio: false
       }
     });
   }

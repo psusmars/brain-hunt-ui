@@ -1,7 +1,15 @@
 <h1>BrainHunt Data Viewing Dashboard</h1>
-<div [hidden]="!readings" class="canvas-container">
-  <canvas #chart></canvas>
-</div>
+<mat-card>
+  <mat-card-title>
+    <h3>{{readings ? selectedReadingSession.name : "Select a reading session to load data"}}</h3>
+  </mat-card-title>
+  <mat-card-content>
+    <div class="canvas-container">
+      <canvas [hidden]="!readings" #chart></canvas>
+    </div>
+  </mat-card-content>
+
+</mat-card>
 <mat-form-field>
   <mat-label>Reading Session</mat-label>
   <mat-select [(ngModel)]="selectedReadingSession">

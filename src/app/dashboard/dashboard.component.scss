@@ -10,6 +10,21 @@
   margin-bottom: 14px;
 }
 
+.canvas-container {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  > div {
+    text-align: center;
+    // background-color: gray;
+    // color: black;
+  }
+  > * {
+    height: 350px;
+    width: 100%;
+  }
+}
+
 // .reading-session-detail-item > p {
 //   margin-left: 5px;
 // }
