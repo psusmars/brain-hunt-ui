@@ -10,6 +10,7 @@ import { BrainHuntApiService, SimplifiedBrainSample, ReadingSession, BrainSample
 export class DashboardComponent implements OnInit {
   title = 'brain-hunt';
   @ViewChild('chart', {static: false}) canvas: ElementRef;
+  pointRadius = 1.0;
   chart: Chart.Chart;
   readingSessions: ReadingSession[];
   readings: SimplifiedBrainSample[];
@@ -40,6 +41,7 @@ export class DashboardComponent implements OnInit {
     let datasets = new Array(this.readings[0].channel_values.length);
     const labels = [];
     const base = this.readings[0].recorded_at;
+    this.readings = this.readings.filter((x, i) => i % 6 == 0);
     this.readings.forEach((i) => {
       labels.push(Math.round((i.recorded_at - base) * 100.0) / 100.0);
       i.channel_values.forEach((c, index) => {
@@ -51,8 +53,10 @@ export class DashboardComponent implements OnInit {
       return {
         label: `Channel ${index + 1}`,
         data: data,
-        borderColor: `rgba(${index*50}, 43, 37, 1)`,
-        backgroundColorColor: `rgba(${index*50}, 43, 37, 1)`
+        // pointBorderWidth: 0.5,
+        pointRadius: this.pointRadius,
+        borderColor: `rgba(${index*50}, 43, 37, 0.5)`,
+        backgroundColorColor: `rgba(${index*50}, 43, 37, 0.5)`
       }
     });
     
