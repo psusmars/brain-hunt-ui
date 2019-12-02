@@ -1,0 +1,8 @@
+<form *ngIf="formGroup" [formGroup]="formGroup" (submit)="onSubmit()">
+    <h3>Create Reading Session</h3>
+    <mat-form-field>
+        <input matInput formControlName="name" placeholder="Name"/>
+    </mat-form-field>
+    <input (change)="onFileChange($event)" type="file" />
+    <button type="submit">Process</button>
+</form>

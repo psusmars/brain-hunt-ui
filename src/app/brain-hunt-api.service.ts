@@ -41,9 +41,13 @@ export class BrainHuntApiService {
 
   }
 
+  private _getURL(path: string) {
+    return `${this.baseUrl}${path}.json`;
+  }
+
   getReadingSessions() : Observable<ReadingSession[]> {
     return this.http.get<ReadingSession[]>(
-      `${this.baseUrl}reading_sessions`
+      this._getURL('reading_sessions')
     ).pipe(map((readingSessions: ReadingSession[]) => {
       return readingSessions.map((readingSession: ReadingSession) => {
         readingSession.metadata.recorded_at = new Date(readingSession.metadata.recorded_at as any);
@@ -55,7 +59,14 @@ export class BrainHuntApiService {
 
   getBrainSamples(reading_session_id: string | number) : Observable<BrainSamplesResponse> {
     return this.http.get<BrainSamplesResponse>(
-      `${this.baseUrl}reading_sessions/${reading_session_id}/brain_samples`
+      this._getURL(`reading_sessions/${reading_session_id}/brain_samples`)
     );
+  }
+
+  createReadingSession(data: {file: any}): Observable<any> {
+    return this.http.post(
+      this._getURL('process_txt_file'),
+      data
+    )
   }
 }

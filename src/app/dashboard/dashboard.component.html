@@ -18,9 +18,7 @@
     </mat-option>
   </mat-select>
 </mat-form-field>
-<mat-form-field>
-    <input matInput placeholder="Point border raidius" [(ngModel)]="pointRadius">
-</mat-form-field>
+<app-uploader></app-uploader>
 <mat-list *ngIf="selectedReadingSession">
   <mat-list-item>
     <div class="reading-session-detail-row">

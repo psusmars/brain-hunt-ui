@@ -7,12 +7,14 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrainHuntApiService } from './brain-hunt-api.service';
 import { MaterialModule } from './material/material.module';
+import { UploaderComponent } from './uploader/uploader.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    UploaderComponent
   ],
   imports: [
     BrowserModule,
